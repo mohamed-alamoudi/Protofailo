@@ -74,44 +74,28 @@
     const responseBox = document.getElementById("ai-response");
 
     if (!question) {
-      responseBox.innerHTML = "Please enter a question.";
+      responseBox.innerHTML = "⚠️ الرجاء إدخال سؤال.";
       return;
     }
 
-    responseBox.innerHTML = "waiting...";
+    responseBox.innerHTML = "⏳ جاري معالجة سؤالك...";
 
     try {
-      // const response = await fetch("https://api.deepseek.com/v1/chat/completions", {
-      const response = await fetch("https://api.together.xyz/v1/chat/completions", {
+      const response = await fetch("../php/api.php", { // سيتم استدعاء ملف PHP
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          // "Authorization": "Bearer sk-b6896dc9b49e4d79b9e1f1779732acb1"
-          "Authorization": "Bearer tgp_v1_JINpLljnY0QPuZOJJoj43zv-6ZCfpYUvVqvdFhsetm0"
-        },
-        body: JSON.stringify({
-          model: "deepseek-coder",
-          messages: [
-            { role: "system", content: "You are an experienced software assistant, answer only technical questions." },
-            { role: "user", content: question }
-          ],
-          temperature: 0.5,
-          max_tokens: 800
-        })
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ question })
       });
 
       const data = await response.json();
 
-      if (data.choices && data.choices.length > 0) {
-        const answer = data.choices[0].message.content;
-        responseBox.innerHTML = answer;
+      if (data.error) {
+        responseBox.innerHTML = "❌ " + data.error;
       } else {
-        responseBox.innerHTML = "No response found.";
+        responseBox.innerHTML = data.choices[0].message.content;
       }
-
     } catch (error) {
-      console.error(error);
-      responseBox.innerHTML = "An error occurred while calling the DeepSeek API.";
+      responseBox.innerHTML = "❌ فشل الاتصال بالخادم.";
     }
   }
 </script>
