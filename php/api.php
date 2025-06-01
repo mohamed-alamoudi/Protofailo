@@ -4,24 +4,21 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     die('Method Not Allowed');
 }
 header('Content-Type: application/json');
-header('Access-Control-Allow-Origin: *'); // للسماح بطلبات من أي مصدر (يمكنك تقييده لاحقاً)
+header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST');
 header('Access-Control-Allow-Headers: Content-Type');
 
-// استقبال البيانات المرسلة من العميل
 $data = json_decode(file_get_contents('php://input'), true);
 $question = $data['question'] ?? '';
 
 if (empty($question)) {
     http_response_code(400);
-    echo json_encode(['error' => 'الرجاء إدخال سؤال']);
+    echo json_encode(['error' => 'Please enter a question']);
     exit;
 }
 
-// مفتاح API الخاص بك - تأكد من تغييره!
-require_once 'config.php';
+require_once '../php/config.php';
 
-// بيانات الطلب لـ Together API
 $payload = [
     'model' => 'deepseek-coder',
     'messages' => [
@@ -38,7 +35,6 @@ $payload = [
     'max_tokens' => 800
 ];
 
-// إعداد الطلب لـ Together API
 $ch = curl_init('https://api.together.xyz/v1/chat/completions');
 curl_setopt_array($ch, [
     CURLOPT_RETURNTRANSFER => true,
@@ -50,16 +46,14 @@ curl_setopt_array($ch, [
     ]
 ]);
 
-// تنفيذ الطلب
 $response = curl_exec($ch);
 $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 curl_close($ch);
 
 if ($http_code !== 200) {
     http_response_code(500);
-    echo json_encode(['error' => 'حدث خطأ في الخادم الخارجي']);
+    echo json_encode(['error' => 'An error occurred on the external server. Please try again later.']);
     exit;
 }
 
-// إرجاع الرد للعميل
 echo $response;

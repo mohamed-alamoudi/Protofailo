@@ -18,7 +18,8 @@
   <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon" />
 
   <!-- link main css -->
-  <link rel="stylesheet" href="../css/all.min.css" />
+  <link rel="stylesheet" href="../css/all.css" />
+  <!-- link blog css -->
   <link rel="stylesheet" href="../css/blog.css" />
 </head>
 
@@ -67,37 +68,9 @@
     </div>
   </section>
 </body>
-<script src="../js/main.min.js"></script>
-<script>
-  async function askAI() {
-    const question = document.getElementById("user-question").value.trim();
-    const responseBox = document.getElementById("ai-response");
-
-    if (!question) {
-      responseBox.innerHTML = "⚠️ الرجاء إدخال سؤال.";
-      return;
-    }
-
-    responseBox.innerHTML = "⏳ جاري معالجة سؤالك...";
-
-    try {
-      const response = await fetch("../php/api.php", { // سيتم استدعاء ملف PHP
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ question })
-      });
-
-      const data = await response.json();
-
-      if (data.error) {
-        responseBox.innerHTML = "❌ " + data.error;
-      } else {
-        responseBox.innerHTML = data.choices[0].message.content;
-      }
-    } catch (error) {
-      responseBox.innerHTML = "❌ فشل الاتصال بالخادم.";
-    }
-  }
-</script>
+<!-- navbar.js -->
+<script src="../js/navbar.js"></script>
+<!-- ai.js -->
+<script src="../js/ai.js"></script>
 
 </html>

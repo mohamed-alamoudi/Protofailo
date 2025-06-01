@@ -1,0 +1,54 @@
+#code-bar {
+    width: 50%;
+    overflow: auto;
+    font-size: 16px;
+    white-space: pre;
+    word-break: normal;
+}
+
+.cursor {
+    display: inline-block;
+    background-color: #9cdcfe;
+    width: 10px;
+    animation: blink 1s infinite;
+    margin-left: 2px;
+    vertical-align: bottom;
+}
+
+@keyframes blink {
+
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0;
+    }
+}
+
+.tag {
+    color: #569CD6;
+}
+
+
+.attr-name {
+    color: #9CDCFE;
+}
+
+.attr-value {
+    color: #CE9178;
+}
+
+.top_text {
+    color: #d4d4d4;
+    margin: 10px 0;
+}
+
+@media (max-width: 768px) {
+    #code-bar {
+        width: 100%;
+        min-height: 250px;
+    }
+}

@@ -398,7 +398,7 @@ nav ul.show li {
 .about .about_us .container .box {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: start;
 }
 
 .about .about_us .container .box .text {
