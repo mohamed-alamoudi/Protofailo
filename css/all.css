@@ -401,24 +401,6 @@ nav ul.show li {
     align-items: start;
 }
 
-.about .about_us .container .box .text {
-    width: 50%;
-    position: relative;
-    padding-left: 10px;
-    color: var(--text);
-    /* color: transparent; */
-    /* background-image: linear-gradient(var(--white), var(--text)); */
-}
-
-.about .about_us .container .box .text::before {
-    content: '';
-    position: absolute;
-    width: 3px;
-    height: 100%;
-    left: 0;
-    top: 0;
-    background-color: var(--text);
-}
 
 .about .about_us .container .box .card {
     width: 45%;

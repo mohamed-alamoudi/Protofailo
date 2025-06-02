@@ -1,0 +1,53 @@
+.login form {
+    width: fit-content;
+    margin: 0 auto;
+    min-height: 250px;
+}
+
+.login form label {
+    display: block;
+    margin: 5px;
+    color: var(--white);
+    font-size: 17px;
+}
+
+.login form input {
+    display: block;
+    width: 250px;
+    padding: 0.375rem 0.75rem;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    border-radius: 7px;
+    color: var(--white);
+    border: 1px solid var(--white);
+    background-color: var(--eee);
+}
+
+.login form .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login form .button,
+.login form button {
+    font-size: 16px;
+    border-radius: 7px;
+    width: 120px;
+    height: 30px;
+    cursor: pointer;
+    margin: 20px 5px;
+    background-color: var(--blue);
+    color: var(--white);
+}
+
+.login form .button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    span {
+        font-size: 17px;
+    }
+}
