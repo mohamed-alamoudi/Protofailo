@@ -1,0 +1,56 @@
+/* btn nav */
+nav ul.active {
+    display: block;
+}
+
+/* opacity */
+/* .text-home-opacity,
+.image-home-opacity {
+    opacity: 0;
+    transform: translateX(80px);
+    transition: opacity 3s, transform 2s;
+} */
+
+/* .text-home-opacity {
+    transform: translateX(-80px);
+} */
+
+.text-home-opacity,
+.image-home-opacity,
+.nav-bar,
+.titel,
+.card2,
+.card {
+    opacity: 0;
+    transform: translateY(-65px);
+    transition: opacity 3s, transform 2s;
+}
+
+.titel {
+    transform: translateX(65px);
+}
+
+.text-home-opacity,
+.card {
+    transform: translateX(-100px);
+}
+
+.image-home-opacity,
+.card2 {
+    transform: translateX(120px);
+}
+
+.opacity {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transform: translateX(0) !important;
+}
+
+/* about */
+.content {
+    display: none;
+}
+
+.content.active {
+    display: block;
+}
